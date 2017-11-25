@@ -11,8 +11,8 @@ export default class extends React.Component {
 	}
 
 	componentWillMount() {
-		// console.log(this.props.partLength);
-		this.id = this.props.part + '-' + this.props.index;
+		// console.log(this.props.messageCount);
+		this.id = this.props.message + '-' + this.props.index;
 	}
 
 	// componentWillReceiveProps(nextProps) { // Inefficient as fuck? Updates all
@@ -28,17 +28,18 @@ export default class extends React.Component {
 		if(this.state.active) {
 			let val = this.refs.newText.value;
 			this.setState({active: false, edit: `✎`});
-			this.props.editMessageParent({"segment": this.props.part, "index": this.props.index}, val);
+			this.props.editMessageParent({"segment": this.props.message, "index": this.props.index}, val);
 		} else {
 			this.setState({active: true, edit: `✔`});
 		}
 	}
 
 	move(direction) {
+		this.state.active && this.setState({active: false, edit: `✎`});
 		console.log("Moving segment " + direction);
-		this.props.moveMessage(direction, {"segment": this.props.part, "index": this.props.index});
+		this.props.moveMessage(direction, {"segment": this.props.message, "index": this.props.index});
 		// setTimeout(()=>{
-		// 	this.props.moveMessage({"segment": this.props.part, "index": this.props.index});
+		// 	this.props.moveMessage({"segment": this.props.message, "index": this.props.index});
 		// }, 500)
 		
 	}
@@ -68,7 +69,7 @@ export default class extends React.Component {
 			textArea = <p>{this.props.text}</p>
 		}
 
-		let subMenuButtons = <button className="delete" onClick={() => this.delete()}>Delete</button>;
+		let subMenuButtons = <button className="btn-block btn-block-delete" onClick={() => this.delete()}>Delete</button>;
 
 		let listItemClasses = () => {
 			let activeClasses;
@@ -87,13 +88,26 @@ export default class extends React.Component {
 			return [activeClasses, animClasses].join(' ');
 		}
 		return (
-			<li id={this.props.part + '-' + this.props.id} className={listItemClasses()}>
+			<li id={this.props.message + '-' + this.props.id} className={listItemClasses()}>
 				<div className="arrows">
-					<button className={this.props.index === 0 ? "grey unavailable" : "grey"} onClick={() => this.move("up")}>▲</button>
-					<button className={this.props.index === this.props.partLength ? "grey unavailable" : "grey"} onClick={() => this.move("down")}>▼</button>
+					<button className={
+						this.props.index === 0 ?
+						"btn-inline btn-inline-default btn-inline-unavailable" :
+						"btn-inline btn-inline-default"
+					} onClick={() => this.move("up")}>
+						▲
+					</button>
+					<button className={
+						this.props.index === this.props.messageCount ?
+						"btn-inline btn-inline-default btn-inline-unavailable" :
+						"btn-inline btn-inline-default"
+					} onClick={() => this.move("down")}>
+						▼
+					</button>
+					<div className="flex-spacer"/>
 				</div>
-				<div className={this.state.active ? "text-blue text-blue-active" : "text-blue"}>
-				<span className="message-details">Index: {this.props.index}, ID: {this.props.part + '-' + this.props.id}</span>
+				<div className={this.state.active ? "message-inner message-inner-active" : "message-inner"}>
+				<span className="message-details">Index: {this.props.index}, ID: {this.props.message + '-' + this.props.id}</span>
 				{textArea}
 				{
 					this.state.active ? subMenuButtons : ""
@@ -101,8 +115,8 @@ export default class extends React.Component {
 				}
 				</div>
 				<div>
-					<button onClick={() => this.editMessage()}>{this.state.edit}</button>
-					<button className="green" onClick={() => this.addMessage()}>+</button>
+					<button className="btn-block btn-block-edit" onClick={() => this.editMessage()}>{this.state.edit}</button>
+					<button className="btn-block btn-block-new" onClick={() => this.addMessage()}>+</button>
 				</div>
 			</li>
 		);

@@ -1,0 +1,21 @@
+.new-segment-btn {
+	margin: 0 auto;
+	background-color: #ccc;
+	border-radius: 50%;
+}
+.new-segment-container {
+	max-width: 700px;
+	outline: 5px dashed #ddd;
+	padding: 45px;
+	outline-offset: -12px;
+	cursor: pointer;
+	transition: .3s;
+}
+.new-segment-container:hover {
+	outline-color: #7CB342;
+}
+
+.new-segment-container:hover .new-segment-btn {
+	background-color: #7CB342;
+	box-shadow: unset;
+}

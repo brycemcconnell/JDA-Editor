@@ -1,4 +1,5 @@
 import React from 'react';
+import "./AddSegment.css";
 
 export default class extends React.Component {
 
@@ -9,7 +10,7 @@ export default class extends React.Component {
 	render() {
 		return (
 			<div className="new-segment-container segment segment-centering" onClick={() => this.addSegment()}>
-				<button className="new-segment-btn">+</button>
+				<button className="btn-block new-segment-btn">+</button>
 			</div>
 		);
 	}

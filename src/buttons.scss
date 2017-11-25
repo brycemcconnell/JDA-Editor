@@ -1,0 +1,112 @@
+/* Variables */
+
+$color-default: #999;
+$color-default-hover: #ccc;
+$color-unavailable: #ddd;
+$color-unavailable-hover: #ddd;
+$color-unavailable-active: #777;
+$color-edit: #189aee;
+$color-edit-hover: #0690E9;
+$color-new: #8BC34A;
+$color-new-hover: #7CB342;
+
+/* Default Styles */
+button {
+	border: 0;
+	transition: .3s;
+	cursor: pointer;
+	font-size: 1.5em;
+}
+.btn-inline {
+	display: inline;
+	background-color: transparent;
+	margin: 0 0 0 8px;
+	padding: 0;
+}
+.btn-block {
+	display: block;
+	min-width: 40px;
+	min-height: 40px;
+	color: #fff;
+	font-weight: bold;
+	border-radius: 1px;
+	&:hover {
+		box-shadow: 0px 2px 5px -1px #777;
+	}
+}
+/* Block Button types */
+.btn-block-unavailable {
+	background-color: $color-unavailable;
+	cursor: auto;
+	box-shadow: unset;
+	&:active {
+		background-color: $color-unavailable-active;
+	}
+}
+.btn-block-default {
+	background-color: $color-default;
+	&:hover {
+		background-color: $color-default-hover;
+	}
+}
+.btn-block-edit {
+	background-color: $color-edit;
+	&:hover {
+		background-color: $color-edit-hover;
+	}
+}
+.btn-block-new {
+	background-color: $color-new;
+	&:hover {
+		background-color: $color-new-hover;
+	}
+}
+.btn-block-delete {
+	background-color: #ed7368;
+	&:hover {
+		background-color: #ff776b;
+	}
+}
+
+/* Inline Button types */
+.btn-inline-edit {
+	color: $color-edit;
+	&:hover {
+		color: $color-edit-hover;
+	}
+}
+.btn-inline-new {
+	color: $color-new;
+	&:hover {
+		color: $color-new-hover;
+	}
+}
+.btn-inline-default {
+	color: $color-default;
+	&:hover {
+		color: $color-default-hover;
+	}
+}
+.btn-inline-unavailable {
+	color: $color-unavailable;
+	cursor: auto;
+	&:active {
+		color: $color-unavailable-active;
+	}
+}
+.btn-inline-delete {
+	background-color: #ed7368;
+	&:hover {
+		background-color: #ff776b;
+	}
+}
+
+/* Alt styles */
+
+.btn-text-white {
+	color: #fff;
+}
+
+.btn-text-size-unset {
+	font-size: unset;
+}

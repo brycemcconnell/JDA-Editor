@@ -1,0 +1,40 @@
+.config-holder {
+	position: relative;
+}
+
+.config-menu {
+	position: absolute;
+	box-shadow: 0px 1px 6px -2px #777;
+	top: 0;
+	left: 100%;
+	width: intrinsic;
+	width: max-content;
+}
+
+.config-menu li {
+	background-color: #fff;
+/*	border-bottom: 1px solid #ddd;*/
+	min-height: 40px;
+	line-height: 40px;
+	padding: 0 16px;
+	cursor: pointer;
+}
+.config-menu li:hover {
+	background-color: #eee;
+/*.config-menu li:last-child {
+	border-bottom: none;
+}*/
+}
+
+.segment-config {
+	background-color: #d7d7d7;
+}
+
+.segment-config button {
+	background-color: transparent;
+}.segment-config button:hover {
+	background-color: #aaa;
+}
+.segment-config:first-child {
+	padding-top: 7px;
+}

@@ -3,7 +3,7 @@
 
 .segment {
 	width: 100%;
-	padding: 20px;
+	padding: 8px 16px 16px;
 }
 
 .segment-container {
@@ -14,10 +14,6 @@
 	box-shadow: 0px 2px 15px -8px #777;
 }
 
-.zoom-in {
-	animation: ZoomIn 1s ;
-}
-
 .moveup {
 	animation: MoveUp .4s ease forwards; 
 }
@@ -25,26 +21,31 @@
 	animation: MoveDown .4s ease forwards;
 }
 .header {
+	border-bottom: 2px solid #ddd;
+}
+.header div,
+.header h2 {
+    margin: 0 auto 20px;
+}
+.footer {
+	border-top: 2px solid #ddd;
+}
+
+.footer,
+.header {
 	width: 100%;
-	margin-top: 0;
 	padding: 20px;
+	box-shadow: unset;
 }
 
-.segment-config {
-	background-color: #d7d7d7;
-}
-
-.segment-config > button {
-	background-color: transparent;
-}.segment-config > button:hover {
-	background-color: #aaa;
-}
-.segment-config:first-child {
-	padding-top: 7px;
-}
 .header.segment-container {
 	display: block;
 	margin: 0 0 20px;
+}
+
+.footer.segment-container {
+	display: block;
+	margin: 20px 0 0;
 }
 
 * {
@@ -60,34 +61,15 @@ body {
 	background-color: #fff;
 	background-image: url('../bg.png');
 }
-button {
-	display: block;
-	width: 40px;
-	height: 40px;
-	border: 0;
-	margin: 0 7px 7px;
-	border-radius: 1px;
-	background-color: #189aee;
-	color: #fff;
-	font-weight: bold;
-	transition: .3s;
-	cursor: pointer;
-	font-size: 1.5em;
-}
-button:hover {
-	box-shadow: 0px 2px 5px -1px #777;
-	background-color: #0690E9;
-}
+
 
 .message {
 	display: flex;
-	margin: 20px auto;
+	margin: 10px 0;
 	justify-content: space-between;
 	background-color: #f8f7f3;
 	transition: .3s;
 	font-size: 1em;
-	max-width: 600px;
-	padding: 10px 0 6px;
 	border: 1px solid #e8ebe8;
 }
 
@@ -113,15 +95,11 @@ textarea {
 	background: #fff;
 }
 
-.text-blue {
+.message-inner {
 	margin: 0 8px;
 	width: 100%;
 	border: 2px solid transparent;
 	transition: 0.5s;
-}
-
-.text-blue-active {
-	/*border: 2px solid #189aee;*/
 }
 
 p {
@@ -129,81 +107,16 @@ p {
 	white-space: pre-wrap;
 }
 
-.grey {
-	margin: 0 0 0 9px;
-	background-color: transparent;
-	color: #999;
-	height: unset;
-	width: unset;
-	padding: 0;
-	transition: .2s;
-}
-
-.grey:hover {
-	background-color: transparent;
-	color: #ccc;
-	box-shadow: none;
-}
-
-.grey:active {
-	background-color: transparent;
-	color: #777;
-}
-
-.green {
-	background-color: #8BC34A;
-}
-
-.green:hover {
-	background-color: #7CB342;
-}
-
 .arrows {
 	border-right: 1px solid #e8ebe8;
-	padding-right: 10px;
+	padding: 4px 10px 0 2px;
+	justify-content: space-around;
+	display: flex;
+	flex-direction: column;
 }
 
-.delete {
-	text-align: right;
-	margin-top: 6px;
-	margin-left: auto;
-	background-color: #ed7368;
-	width: auto;
-}
-
-.delete:hover {
-	background-color: #ff776b;
-}
-
-.new-segment-btn {
-	margin: 0 auto;
-	background-color: #ccc;
-	border-radius: 50%;
-}
-
-.new-segment-container {
-	max-width: 700px;
-	outline: 5px dashed #ddd;
-	padding: 45px;
-	outline-offset: -12px;
-	cursor: pointer;
-	transition: .3s;
-}
-.new-segment-container:hover {
-	outline-color: #7CB342;
-}
-
-.new-segment-container:hover .new-segment-btn {
-	background-color: #7CB342;
-}
-
-.unavailable, .unavailable:hover {
-	color: #ddd;
-	cursor: auto;
-}
-
-.wrapper:last-child {
-	margin-bottom: 80px;
+.flex-spacer {
+	flex: 1;
 }
 
 .file-ops {
@@ -222,20 +135,9 @@ input.file-ops-btn::-webkit-file-upload-button {
 
 .message-id-header {
 	display: flex;
-}
-.message-id-header > button {
-	color: #999;
-	background-color: transparent;
-}
-.message-id-header > button:hover {
-	box-shadow: unset;
-	color: #bbb;
+	margin: 0 0 8px 0;
 }
 
-@keyframes ZoomIn {
-	from { transform: translateX(-200%); }
-	to { transform: translateX(0%); }
-}
 @keyframes MoveUp {
 	from {
 		transform: translateY(0);
@@ -245,7 +147,7 @@ input.file-ops-btn::-webkit-file-upload-button {
 		box-shadow: 0px -2px 12px -6px #777;
 	}
 	to {
-		transform: translateY(calc(-100% - 20px));
+		transform: translateY(calc(-100% - 10px));
 		box-shadow: 0px 0px 0px #777;
     }
 }
@@ -254,15 +156,11 @@ input.file-ops-btn::-webkit-file-upload-button {
 		transform: translateY(0);
 	}
 	50% {
-		 transform: translateY(calc(50% + 10px)) scale(.95);
+		 transform: translateY(calc(50% + 5px)) scale(.95);
 	}
 	to {
-		transform: translateY(calc(100% + 20px));
+		transform: translateY(calc(100% + 10px));
     }
-}
-
-.absolute {
-	position: absolute;
 }
 
 .segmentNumber {
@@ -276,11 +174,13 @@ input.file-ops-btn::-webkit-file-upload-button {
 	color: #777;
 }
 
-.debug-segment-json {
+.debug-segment-json p {
 	max-height: 400px;
-	max-width: 600px;
-	overflow: scroll;
+	max-width: 400px;
+	background-color: rgba(238, 238, 238, 0.46);
 	background-color: #eee7;
+	overflow: scroll;
+	font-family: monospace;
 }
 
 .segment-wrapper {
@@ -291,67 +191,28 @@ input.file-ops-btn::-webkit-file-upload-button {
 	margin: 0 100px 20px;
 }
 
-.requirement-tag {
-	background-color: #189aee;
-	color: #fff;
-	border-radius: 3px;
-	padding: 0 8px;
-	font-size: .8em;
-	margin: 0 0 0 4px;
-	display: inline-block;
-	height: 30px;
+.link-github {
+	background-image: url("../GitHub-Mark-32px.png");
+	height: 32px;
+	width: 32px;
+	margin: 0 auto;
 }
 
-.requirement-container {
+.debug-segment-header {
 	display: flex;
-}
-.requirement-container h3 {
-	margin-right: 4px;
-}
-.requirement-edit {
-	display: inline-block;
-	background-color: transparent;
-	width: unset;
-	height: 30px;
-	color: #ddd;
-	font-size: 1.25em;
-	padding: 0;
-	margin: 0 0 0 4px;
-}
-.requirement-edit:hover {
-	background-color: transparent;
-	box-shadow: none;
-	color: #fff;
+	justify-content: space-between;
+	line-height: 40px;
+	background-color: #fff;
+
 }
 
-.requirement-add-target {
-	width: unset;
-	font-size: .8em;
-	height: 30px;
-	margin: 0;
+.debug-segment-header h3 {
+	padding: 0 0 0 16px;
+	border-bottom: 2px solid #ddd;
+	flex: 1;
 }
 
-.requirement-add-has {
-	width: 30px;
-	height: 30px;
-	padding: unset;
-	margin: 0;
-	display: inline;
-	background-color: #ccc;
-	border-radius: 50%;
-	color: #777;
-}
-
-.btn-new {
-	background-color: #8BC34A;
-}
-.btn-new-inline {
-	color: #8BC34A;
-}
-
-.btn-edit {
-background-color: #189;
-}
-.btn-edit-inline {
-	color: #8BC34A;
+.debug-segment-json {
+	box-shadow: 0px 2px 15px -8px #777;
+	margin-bottom: auto;
 }
