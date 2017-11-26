@@ -28,7 +28,7 @@ button {
   cursor: auto;
   box-shadow: unset; }
   .btn-block-unavailable:active {
-    background-color: #777; }
+    background-color: #ddd; }
 
 .btn-block-default {
   background-color: #999; }
@@ -70,7 +70,7 @@ button {
   color: #ddd;
   cursor: auto; }
   .btn-inline-unavailable:active {
-    color: #777; }
+    color: #ddd; }
 
 .btn-inline-delete {
   background-color: #ed7368; }

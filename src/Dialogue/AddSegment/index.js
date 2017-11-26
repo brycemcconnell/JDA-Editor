@@ -4,7 +4,7 @@ import "./AddSegment.css";
 export default class extends React.Component {
 
 	addSegment() {
-		this.props.addSegmentParent();
+		this.props.addSegment();
 	}
 
 	render() {

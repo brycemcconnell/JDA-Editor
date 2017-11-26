@@ -1,0 +1,26 @@
+@keyframes slide-in {
+	from {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+.anim-slide-in {
+	animation: slide-in .3s forwards;
+}
+@keyframes slide-out {
+	from {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+}
+.anim-slide-out {
+	animation: slide-out .3s forwards;
+}

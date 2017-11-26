@@ -16,5 +16,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "http://aupink.net/apps/json-dialogue/build"
+  "homepage": "http://aupink.net/apps/jda"
 }

@@ -11,16 +11,11 @@ export default class extends React.Component {
 	}
 
 	componentWillMount() {
-		// console.log(this.props.messageCount);
 		this.id = this.props.message + '-' + this.props.index;
 	}
 
-	// componentWillReceiveProps(nextProps) { // Inefficient as fuck? Updates all
-	// 	this.setState({text: nextProps.text});
-	// }
-
 	addMessage() {
-		this.props.addMessageParent();
+		this.props.addMessage();
 	}
 
 	editMessage() {
@@ -28,7 +23,7 @@ export default class extends React.Component {
 		if(this.state.active) {
 			let val = this.refs.newText.value;
 			this.setState({active: false, edit: `✎`});
-			this.props.editMessageParent({"segment": this.props.message, "index": this.props.index}, val);
+			this.props.editMessage({"segment": this.props.message, "index": this.props.index}, val);
 		} else {
 			this.setState({active: true, edit: `✔`});
 		}
@@ -38,26 +33,13 @@ export default class extends React.Component {
 		this.state.active && this.setState({active: false, edit: `✎`});
 		console.log("Moving segment " + direction);
 		this.props.moveMessage(direction, {"segment": this.props.message, "index": this.props.index});
-		// setTimeout(()=>{
-		// 	this.props.moveMessage({"segment": this.props.message, "index": this.props.index});
-		// }, 500)
-		
 	}
-
-	// moveDown() {
-	// 	console.log("Moving segment down");
-	// 	this.setState({moving: "down"});
-	// 	setTimeout(()=>{
-	// 		this.setState({moving: ""})
-	// 		this.props.moveDownParent();
-	// 	}, 500)
-	// }
 
 	delete() {
 		let areYouSure = window.confirm("Are you sure you want to delete this segment?");
 		if (areYouSure) {
 			this.setState({active: false, edit: `✎`});
-			this.props.deleteMessageParent();
+			this.props.deleteMessage();
 		} 
 	}
 	
@@ -92,14 +74,14 @@ export default class extends React.Component {
 				<div className="arrows">
 					<button className={
 						this.props.index === 0 ?
-						"btn-inline btn-inline-default btn-inline-unavailable" :
+						"btn-inline btn-inline-unavailable" :
 						"btn-inline btn-inline-default"
 					} onClick={() => this.move("up")}>
 						▲
 					</button>
 					<button className={
 						this.props.index === this.props.messageCount ?
-						"btn-inline btn-inline-default btn-inline-unavailable" :
+						"btn-inline btn-inline-unavailable" :
 						"btn-inline btn-inline-default"
 					} onClick={() => this.move("down")}>
 						▼

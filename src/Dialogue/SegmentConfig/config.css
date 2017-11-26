@@ -19,6 +19,9 @@
 	padding: 0 16px;
 	cursor: pointer;
 }
+.config-menu li:last-child {
+	color: #ed7368;
+}
 .config-menu li:hover {
 	background-color: #eee;
 /*.config-menu li:last-child {
