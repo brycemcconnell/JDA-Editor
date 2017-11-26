@@ -29,6 +29,7 @@ export default class extends React.Component {
 	}
 
 	renderConfig() {
+
 		return(
 			<ul className="config-menu">
 				<li onClick={this.sendDebugToggle.bind(this)}>Toggle raw JSON</li>
@@ -45,12 +46,12 @@ export default class extends React.Component {
 	render() {
 		return (
 			<div className="segment-config">
-				<button className="btn-block">▲</button>
-				<div className="config-holder">
-					<button onFocus={this.toggleConfig.bind(this)} className="btn-block">⚙</button>
+				<button onClick={() => this.props.moveSegment("up", {segment: this.props.segment})} className="btn-block">▲</button>
+				<div onClick={this.toggleConfig.bind(this)} className="config-holder">
+					<button className="btn-block">⚙</button>
 					{this.state.active && this.renderConfig()}
 				</div>
-				<button className="btn-block">▼</button>
+				<button onClick={() => this.props.moveSegment("down", {segment: this.props.segment})} className="btn-block">▼</button>
 				<h2 className="segmentNumber">{this.props.segment}</h2>
 			</div>
 		);

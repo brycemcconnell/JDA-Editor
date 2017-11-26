@@ -24,3 +24,35 @@
 .anim-slide-out {
 	animation: slide-out .3s forwards;
 }
+
+.anim-move-up {
+	animation: move-up .4s ease forwards; 
+}
+.anim-move-down {
+	animation: move-down .4s ease forwards;
+}
+
+@keyframes move-up {
+	from {
+		transform: translateY(0);
+		box-shadow: 0px 0px 0px #777;
+	}
+	50% {
+		box-shadow: 0px -2px 12px -6px #777;
+	}
+	to {
+		transform: translateY(calc(-100% - 10px));
+		box-shadow: 0px 0px 0px #777;
+    }
+}
+@keyframes move-down {
+	from {
+		transform: translateY(0);
+	}
+	50% {
+		 transform: translateY(calc(50% + 5px)) scale(.95);
+	}
+	to {
+		transform: translateY(calc(100% + 10px));
+    }
+}

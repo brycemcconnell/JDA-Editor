@@ -1,0 +1,35 @@
+.footer {
+	width: 100%;
+	box-shadow: unset;
+	border-top: 2px solid #ddd;
+	display: block;
+	margin: 48px 0 0;
+	background-color: #fff;
+	padding: 40px 20px;
+	background-image: url(../bg-02.svg);
+	background-size: cover;
+}
+
+.link-github {
+	background-image: url("../GitHub-Mark-32px.png");
+	height: 32px;
+	width: 32px;
+}
+
+.footer-icon {
+	display: inline-block
+}
+
+.footer-social-links {
+	text-align: center;
+}
+
+.footer-credits {
+	text-align: center;
+	margin: 0 0 24px;
+	color: #fff;
+}
+
+.footer-credits a {
+	color: #fff;
+}

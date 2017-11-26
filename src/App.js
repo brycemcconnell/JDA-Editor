@@ -3,7 +3,6 @@ import './App.css';
 import Dialogue from './Dialogue';
 
 
-
 class App extends Component {
   
   constructor() {
@@ -15,7 +14,7 @@ class App extends Component {
 
   render() {
     return (
-      <Dialogue />
+        <Dialogue />
     );
   }
 }

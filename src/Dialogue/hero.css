@@ -1,0 +1,43 @@
+.hero {
+	width: 100%;
+	position: absolute;
+	display: flex;
+	background-image: url(../bg-02.svg);
+	/*	background-size: contain;*/
+	/*	background-attachment: fixed;*/
+	background-size: cover;
+	background-position: center top;
+	background-repeat: no-repeat;
+	height: 700px;
+	z-index: -1;
+}
+
+.hero-title,
+.hero-subtitle {
+	color: #fff;
+	display: block;
+}
+.hero-title {
+	margin-top: 40px;
+	text-align: center;
+	font-size: 70px;
+	font-family: 'Bungee', cursive;
+}
+
+.hero-subtitle {
+	position: absolute;
+	top: 130px;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	word-wrap: none;
+}
+
+.hero-title-container {
+	position: relative;
+}
+
+.hero-spacer {
+	height: 300px;
+	margin-bottom: unset !important;
+}

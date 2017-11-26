@@ -1,4 +1,5 @@
 import React from 'react';
+import './Segment.css';
 import SegmentConfig from '../SegmentConfig';
 import Requirements from '../Requirements';
 import Message from '../Message';
@@ -80,28 +81,25 @@ export default class extends React.Component {
 	}
 
 	moveMessage(direction, pos) {
-		// Handle the animating
+		// Initialize method
 		direction === "up" ? direction = -1 : direction = 1;
 		let newScript = this.props.script;
+		// Handle the animating
 		if (newScript[pos.segment].dialogue[pos.index + direction]) {
 			newScript[pos.segment].dialogue[pos.index + direction].anim = direction * -1;
-			console.log("#Animating: ", direction, "Sibling: ", direction * -1)
 		} else {
 			let result;
 			direction === 1 ? result = "down" : result = "up";
-			console.log("Cannot move index: " + pos.index + " further " + result);
+			console.log("Cannot move MESSAGE index: " + pos.index + " further " + result);
 			return
 		}
 		newScript[pos.segment].dialogue[pos.index].anim = direction;
-		console.log(newScript)
-		// this.setState({data: newScript})
 		this.props.updateScript(newScript);
 		// Handle the exchange of data
 		setTimeout(()=>{
-			console.log("#Moving")
 			let currentDialogue = newScript[pos.segment].dialogue;
 			if (currentDialogue[pos.index + direction]) {
-				console.log("Moving message Index " + 
+				console.log("Moved message Index " + 
 					pos.index +
 					" to " +
 					(pos.index + direction) +
@@ -109,9 +107,9 @@ export default class extends React.Component {
 					pos.segment +
 					", "
 				);
-				let swapSegment = currentDialogue[pos.index + direction];
+				let swapMessage = currentDialogue[pos.index + direction];
 				currentDialogue[pos.index + direction] = currentDialogue[pos.index];
-				currentDialogue[pos.index] = swapSegment;
+				currentDialogue[pos.index] = swapMessage;
 			}
 			currentDialogue[pos.index].anim = "";
 			if (currentDialogue[pos.index + direction].anim) {
@@ -124,15 +122,16 @@ export default class extends React.Component {
 	render() {
 		return (
 			<div className="segment-wrapper">
-				<div>
-					<div className="segment-container segment-centering">
+				<div className="centering">
+					<div className="segment-container">
 						<SegmentConfig
 							segment={this.props.segment}
 							toggleSegmentDebug={this.toggleSegmentDebug.bind(this)}
 							deleteSegment={this.props.deleteSegment.bind(this)}
+							moveSegment={this.props.moveSegment.bind(this)}
 						/>
 						<ul className="segment">
-							<div className="message-id-header">
+							<div className="segment-id-header">
 								<h2>Segment_ID: {this.props.item.Segment_ID}</h2>
 								<button className="btn-inline btn-inline-edit">✎</button>
 							</div>
@@ -152,7 +151,6 @@ export default class extends React.Component {
 									editMessage={this.editMessage.bind(this)}
 									deleteMessage={() => this.deleteMessage({index: i, segment: this.props.segment})}
 									moveMessage={this.moveMessage.bind(this)}
-									moveDownParent={() => this.moveDownParent({index: i, segment: this.props.segment})}
 								/>)}
 						</ul>
 					</div>

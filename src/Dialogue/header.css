@@ -1,0 +1,34 @@
+.header {
+	display: block;
+	margin: 0 0 20px;
+	padding: 0 0 20px;
+	width: 100%;
+	box-shadow: unset;
+}
+
+.header div,
+.header h2 {
+	margin: 0 auto 20px;
+}
+
+.header>.message {
+	max-width: 900px;
+	display: block;
+	padding: 10px 20px;
+}
+
+.file-ops {
+	display: flex;
+}
+
+.file-ops-btn {
+	width: auto;
+	height: 40px;
+	font-size: 1.2em;
+}
+
+/* Fix the fucking upload button on webkit */
+
+input.file-ops-btn::-webkit-file-upload-button {
+	height: 40px;
+}

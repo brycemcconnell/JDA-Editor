@@ -2,13 +2,14 @@ import React from 'react';
 import './Dialogue.css';
 import './animation.css';
 import '../buttons.css';
+import './hero.css';
+import './header.css';
+import './footer.css';
 
 import AddSegment from './AddSegment';
 import Segment from './Segment';
 
 import exampleData from '../data/dialogue.json';
-
-
 
 export default class extends React.Component {
 
@@ -39,6 +40,38 @@ export default class extends React.Component {
 		currentState.splice(pos.segment, 1)
 		console.log(currentState)
 		this.updateScript(currentState)
+	}
+
+	moveSegment(direction, pos) {
+		// Initialize method
+		direction === "up" ? direction = -1 : direction = 1
+		let newScript = this.state.data.script
+		if (newScript[pos.segment + direction] === undefined) {
+			let result;
+			direction === 1 ? result = "down" : result = "up";
+			console.log("Cannot move SEGMENT index: " + pos.segment + " further " + result);
+		}
+		// Handle animation
+	
+		// Handle the exchange of data
+		setTimeout(()=>{
+			if (newScript[pos.segment + direction]) {
+				console.log("Moved segment Index " + 
+					pos.segment +
+					" to " +
+					(pos.segment + direction)
+				);
+				let swapSegment = newScript[pos.segment + direction];
+				newScript[pos.segment + direction] = newScript[pos.segment];
+				newScript[pos.segment] = swapSegment;
+			}
+			// Finalize animation
+			// newScript[pos.segment].anim = "";
+			// if (newScript[pos.segment + direction].anim) {
+			// 	newScript[pos.segment + direction].anim = "";
+			// }
+			this.updateScript(newScript);
+		}, 0)
 	}
 
 	downloadJSON() {
@@ -87,7 +120,14 @@ export default class extends React.Component {
 	render() {
 		return (
 			<div className="wrapper">
-				<div className="header segment-container">
+				<div className="header">
+					<div className="hero" >
+						<div className="hero-title-container flex-spacer">
+							<h1 className="hero-title">JDA<br/>Editor</h1>
+							<span className="hero-subtitle">(Otherwise known as JSON Dialogue Anywhere Editor)</span>
+						</div>
+					</div>
+					<div className="hero-spacer" />
 					<div className="title message">
 						<h1>JSON Dialogue Tool</h1>
 						<p>Upload or download JSON files in a readable format that follows the schema required to use JSON Dialogue</p>
@@ -104,25 +144,40 @@ export default class extends React.Component {
 					</div>
 					<h2 className="message">Character name: {exampleData.name}</h2>
 				</div>
-				<AddSegment
-					addSegment={() => this.addSegment({segment: -1})}
-				/>
-				{this.state.data.script.map((item, j) => {
-					return (
-						<Segment
-							script={this.state.data.script}
-							updateScript={this.updateScript.bind(this)}
-							key={j}
-							segment={j}
-							item={item}
-							addSegment={this.addSegment.bind(this)}
-							deleteSegment={this.deleteSegment.bind(this)}
-						/> 
-					);
-						
-				})}
-				<footer className="footer segment-container">
-					<a href="https://github.com/brycemcconnell/JDA-Editor" alt="View on github"><div className="link-github"></div></a>
+				
+				<section className="dialogue">
+				<div className="flex-spacer" />
+					<div>
+						<AddSegment
+							addSegment={() => this.addSegment({segment: -1})}
+							forceCentering={true}
+						/>
+						{this.state.data.script.map((item, j) => {
+							return (
+								<Segment
+									script={this.state.data.script}
+									updateScript={this.updateScript.bind(this)}
+									key={j}
+									segment={j}
+									item={item}
+									addSegment={this.addSegment.bind(this)}
+									deleteSegment={this.deleteSegment.bind(this)}
+									moveSegment={this.moveSegment.bind(this)}
+								/> 
+							);
+						})}
+					</div>
+				<div className="flex-spacer" />
+				</section>
+				<footer className="footer">
+					<p className="footer-credits">Created with React by <a href="http://aupink.net">Bryce A. McConnell, 2017</a></p>
+					<ul className="footer-social-links">
+						<li>
+							<a href="https://github.com/brycemcconnell/JDA-Editor" alt="View on github">
+								<span className="footer-icon link-github"></span>
+							</a>
+						</li>
+					</ul>
 				</footer>
 			</div>
 		);

@@ -9,7 +9,9 @@ export default class extends React.Component {
 
 	render() {
 		return (
-			<div className="new-segment-container segment segment-centering" onClick={() => this.addSegment()}>
+			<div
+				className={this.props.forceCentering ? "new-segment-container centering" : "new-segment-container"}
+				onClick={() => this.addSegment()}>
 				<button className="btn-block new-segment-btn">+</button>
 			</div>
 		);

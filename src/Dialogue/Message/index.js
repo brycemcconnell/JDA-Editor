@@ -1,4 +1,5 @@
 import React from 'react';
+import './Message.css';
 
 export default class extends React.Component {
 
@@ -31,7 +32,7 @@ export default class extends React.Component {
 
 	move(direction) {
 		this.state.active && this.setState({active: false, edit: `✎`});
-		console.log("Moving segment " + direction);
+		console.log("Moving message " + direction);
 		this.props.moveMessage(direction, {"segment": this.props.message, "index": this.props.index});
 	}
 
@@ -46,7 +47,7 @@ export default class extends React.Component {
 	render() {
 		let textArea;
 		if (this.state.active) {
-			textArea = <textarea ref="newText" defaultValue={this.props.text}></textarea>
+			textArea = <textarea ref="newText" defaultValue={this.props.text} className="message-inner-active"></textarea>
 		} else {
 			textArea = <p>{this.props.text}</p>
 		}
@@ -62,9 +63,9 @@ export default class extends React.Component {
 				activeClasses = "message"
 			}
 			if (this.props.anim === -1) {
-				animClasses = "moveup"
+				animClasses = "anim-move-up"
 			} else if (this.props.anim === 1) {
-				animClasses ="movedown"
+				animClasses ="anim-move-down"
 			}
 			// console.log([activeClasses, animClasses].join(' '));
 			return [activeClasses, animClasses].join(' ');
@@ -88,7 +89,7 @@ export default class extends React.Component {
 					</button>
 					<div className="flex-spacer"/>
 				</div>
-				<div className={this.state.active ? "message-inner message-inner-active" : "message-inner"}>
+				<div className="message-inner">
 				<span className="message-details">Index: {this.props.index}, ID: {this.props.message + '-' + this.props.id}</span>
 				{textArea}
 				{

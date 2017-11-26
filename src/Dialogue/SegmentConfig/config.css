@@ -1,3 +1,7 @@
+.hidden {
+	visibility: hidden;
+}
+
 .config-holder {
 	position: relative;
 }
